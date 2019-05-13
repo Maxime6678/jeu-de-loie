@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import sys
 from random import randint
 import time
+from pygame import mixer
 
 """ Position des cases """
 casex = [44,124,207,290,373,456,540,621,703,789,789,789,709,621,540,456,377,294,207,130,43,43,43,125,202,291,371,454,538,618,704,787,787,787,705,622,541,459,376,294,211,125,43,43,43,126,207,291,370,456,539,617,705,788]
@@ -23,6 +24,11 @@ deCanevas = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
 labelPlayer = [0, 0, 0, 0]
 pastNext = [0, 0, 0, 0]
 playWithComputer = 0
+
+""" Musique """
+mixer.init()
+mixer.music.load('music/craberave.mp3')
+mixer.music.play(-1)
 
 """ Start window """
 
