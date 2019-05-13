@@ -330,7 +330,7 @@ def launchDe():
             showinfo(title="Notification", message="L'ordinateur recule jusqu'à la dernière case noire")
         else:
             showinfo(title="Notification", message="Vous reculez jusqu'à la dernière case noire")
-        movePlayer(currentPlayer, -11)
+        movePlayer(currentPlayer, -12)
     elif playersPos[currentPlayer] == 46:
         if currentPlayer == 1 and playWithComputer:
             showinfo(title="Notification", message="L'ordinateur avance jusqu'à la prochaine case rouge")
@@ -349,8 +349,7 @@ def launchDe():
         else:  
             showinfo(title="Notification", message="Vous descendez à l'échelle")
         moveEchelle(currentPlayer)
-    
-    if playersPos[currentPlayer] == 53:
+    elif playersPos[currentPlayer] == 53:
         gw.destroy()
         return
 
