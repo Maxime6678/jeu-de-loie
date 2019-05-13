@@ -19,7 +19,8 @@ playerCount = 0
 currentPlayer = 0
 lastPlayer = 0
 playersPos = [0, 0, 0, 0]
-playerCanevas = [0, 0, 0, 0]
+playerCanevas = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+colorPion = ['j', 'r', 'b', 'n']
 deCanevas = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
 labelPlayer = [0, 0, 0, 0]
 pastNext = [0, 0, 0, 0]
@@ -85,12 +86,12 @@ gw.resizable(0, 0)
 gw.protocol("WM_DELETE_WINDOW", sys.exit)
  
 back = PhotoImage(file='images/board.gif')
-pion = PhotoImage(file='images/pion.png')
 
 canevas = Canvas(gw, width=855, height=600)
 canevas.create_image(0, 0, anchor=NW, image=back)
 for i in range(0, playerCount):
-    playerCanevas[i] = canevas.create_image(casex[0] + i * 5, casey[0] + i * 5, anchor=CENTER, image=pion)
+    playerCanevas[i][0] = PhotoImage(file='images/pion_' + colorPion[i] + '.png')
+    playerCanevas[i][1] = canevas.create_image(casex[0] + i * 5, casey[0] + i * 5, anchor=CENTER, image=playerCanevas[i][0])
 for i in range(0, 6):
     url = 'images/D' + str(i + 1) + '.png'
     deCanevas[i] = [0, 0]
@@ -115,10 +116,10 @@ def moveEchelle(a):
     elif playersPos[a] == 51:
         echellePos = 3
         playersPos[a] = 35
-    canevas.coords(playerCanevas[a], echellex[echellePos], echelley[echellePos])
+    canevas.coords(playerCanevas[a][1], echellex[echellePos], echelley[echellePos])
     canevas.update()
     time.sleep(0.3)
-    canevas.coords(playerCanevas[a], casex[playersPos[a]], casey[playersPos[a]])
+    canevas.coords(playerCanevas[a][1], casex[playersPos[a]], casey[playersPos[a]])
     canevas.update()
 
 
@@ -356,7 +357,7 @@ def launchDe():
     for i in range (0, playerCount):
         for j in range(0, playerCount):
             if i != j and playersPos[i] == playersPos[j]:
-                canevas.coords(playerCanevas[j], casex[playersPos[j]] + j * 5, casey[playersPos[j]] + j * 5)
+                canevas.coords(playerCanevas[j][1], casex[playersPos[j]] + j * 5, casey[playersPos[j]] + j * 5)
                 canevas.update()
 
     if not canRelaunch :
@@ -388,7 +389,7 @@ def movePlayer(a, b):
         elif b < 0:
             playersPos[a] = playersPos[a] - 1
         if (playersPos[a] < 0): playersPos[a] = 0
-        canevas.coords(playerCanevas[a], casex[playersPos[a]], casey[playersPos[a]])
+        canevas.coords(playerCanevas[a][1], casex[playersPos[a]], casey[playersPos[a]])
         canevas.update()
 
 
