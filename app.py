@@ -125,6 +125,7 @@ def moveEchelle(a):
 
 def launchDe():
     global currentPlayer, deCanevas, labelPlayer, lastPlayer
+    btn.config(state='disabled')
 
     canRelaunch = 0
     rand = randint(1, 6)
@@ -376,6 +377,8 @@ def launchDe():
     if currentPlayer == 1 and playWithComputer:
         time.sleep(0.3)
         launchDe()
+
+    btn.config(state='normal')
 
 
 def movePlayer(a, b):
