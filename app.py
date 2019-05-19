@@ -102,26 +102,26 @@ for i in range(0, 6):
     deCanevas[i][1] = canevas.create_image(-100, -100, anchor=CENTER, image=deCanevas[i][0])
 canevas.grid(row=0, column=0, columnspan=3)
 
-def moveEchelle(a):
+def moveEchelle(player):
     global playersPos, canevas
     echellePos = 0
 
-    if playersPos[a] == 14:
+    if playersPos[player] == 14:
         echellePos = 0
-        playersPos[a] = 6
-    elif playersPos[a] == 18:
+        playersPos[player] = 6
+    elif playersPos[player] == 18:
         echellePos = 1
-        playersPos[a] = 24
-    elif playersPos[a] == 30:
+        playersPos[player] = 24
+    elif playersPos[player] == 30:
         echellePos = 2
-        playersPos[a] = 34
-    elif playersPos[a] == 51:
+        playersPos[player] = 34
+    elif playersPos[player] == 51:
         echellePos = 3
-        playersPos[a] = 35
-    canevas.coords(playerCanevas[a][1], echellex[echellePos], echelley[echellePos])
+        playersPos[player] = 35
+    canevas.coords(playerCanevas[player][1], echellex[echellePos], echelley[echellePos])
     canevas.update()
     time.sleep(0.3)
-    canevas.coords(playerCanevas[a][1], casex[playersPos[a]], casey[playersPos[a]])
+    canevas.coords(playerCanevas[player][1], casex[playersPos[player]], casey[playersPos[player]])
     canevas.update()
 
 
@@ -383,17 +383,17 @@ def launchDe():
     btn.config(state='normal')
 
 
-def movePlayer(a, b):
+def movePlayer(player, deplacement):
     global playersPos, canevas
  
-    for _i in range(0, abs(b)):
+    for _i in range(0, abs(deplacement)):
         time.sleep(0.09)
-        if b > 0:
-            playersPos[a] = playersPos[a] + 1
-        elif b < 0:
-            playersPos[a] = playersPos[a] - 1
-        if (playersPos[a] < 0): playersPos[a] = 0
-        canevas.coords(playerCanevas[a][1], casex[playersPos[a]], casey[playersPos[a]])
+        if deplacement > 0:
+            playersPos[player] = playersPos[player] + 1
+        elif deplacement < 0:
+            playersPos[player] = playersPos[player] - 1
+        if (playersPos[player] < 0): playersPos[player] = 0
+        canevas.coords(playerCanevas[a][1], casex[playersPos[player]], casey[playersPos[player]])
         canevas.update()
 
 
