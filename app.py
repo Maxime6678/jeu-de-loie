@@ -20,10 +20,12 @@ currentPlayer = 0
 lastPlayer = 0
 playersPos = [0, 0, 0, 0]
 playerCanevas = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
-colorPion = ['j', 'r', 'b', 'n']
+colorPion = ['yellow', 'red', 'blue', 'black']
 deCanevas = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
 labelPlayer = [0, 0, 0, 0]
 pastNext = [0, 0, 0, 0]
+classement = [0, 0, 0]
+playerWinCount = 0
 playWithComputer = 0
 
 """ Musique """
@@ -371,8 +373,8 @@ def launchDe():
         if currentPlayer > playerCount - 1:
             currentPlayer = 0
 
-    labelPlayer[lastPlayer].config(font='Helvetica 9 normal', fg='black')
-    labelPlayer[currentPlayer].config(font='Helvetica 9 bold', fg='green')
+    labelPlayer[lastPlayer].config(font='Helvetica 9 normal', fg=colorPion[lastPlayer])
+    labelPlayer[currentPlayer].config(font='Helvetica 11 bold', fg=colorPion[currentPlayer])
 
     if currentPlayer == 1 and playWithComputer:
         time.sleep(0.3)
@@ -404,10 +406,10 @@ for i in range(0, playerCount):
     else:
         playerStr = "Joueur " + str(i + 1)
     font = 'Helvetica 9 normal'
-    labelPlayer[i] = Label(gw, text=playerStr, font=font)
+    labelPlayer[i] = Label(gw, text=playerStr, font=font, fg=colorPion[i])
     if i == 0:
-        font = 'Helvetica 9 bold'
-        labelPlayer[i].config(font=font, fg='green')
+        font = 'Helvetica 11 bold'
+        labelPlayer[i].config(font=font)
     if i < 2:
         labelPlayer[i].grid(row=i+1, column=0)
     else:
