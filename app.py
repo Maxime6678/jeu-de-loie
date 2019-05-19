@@ -393,7 +393,7 @@ def movePlayer(player, deplacement):
         elif deplacement < 0:
             playersPos[player] = playersPos[player] - 1
         if (playersPos[player] < 0): playersPos[player] = 0
-        canevas.coords(playerCanevas[a][1], casex[playersPos[player]], casey[playersPos[player]])
+        canevas.coords(playerCanevas[player][1], casex[playersPos[player]], casey[playersPos[player]])
         canevas.update()
 
 
